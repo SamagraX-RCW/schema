@@ -35,7 +35,7 @@ services:
     networks:
       test:
 
-  identity-service-test:
+  identity-test:
     image: ghcr.io/samagrax-rcw/identity:latest
     depends_on: 
       identity-db-test:
@@ -84,11 +84,11 @@ services:
     depends_on:
       db-test:
         condition: service_healthy
-      identity-service-test:
+      identity-test:
         condition: service_healthy
     environment:
       DATABASE_URL: postgres://postgres:postgres@db-test:5432/postgres
-      IDENTITY_BASE_URL: "http://identity-service-test:3332"
+      IDENTITY_BASE_URL: "http://identity-test:3332"
       ENABLE_AUTH: "false"
     networks:
       test:
