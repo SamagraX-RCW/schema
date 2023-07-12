@@ -89,7 +89,7 @@ services:
       IDENTITY_BASE_URL: "http://identity-service:3332"
       ENABLE_AUTH: "false"
     networks:
-      rcw-test:
+      test:
 
 networks:
   test:
