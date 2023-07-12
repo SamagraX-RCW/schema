@@ -38,7 +38,7 @@ services:
   identity-service-test:
     image: ghcr.io/samagrax-rcw/identity:latest
     depends_on: 
-      db-test:
+      identity-db-test:
         condition: service_healthy
       vault-test:
         condition: service_healthy
@@ -47,7 +47,7 @@ services:
       VAULT_ADDR: "http://vault-test:8200"
       # This will be replaced automatically on initialisation 
       # make compose-init will call setup_vault.sh
-      VAULT_TOKEN: hvs.dOLOfZJe5HJW1LBgQLCnW3YU
+      VAULT_TOKEN: hvs.WccBWI4moN6WL3Cg64GYW3zi
       VAULT_BASE_URL: "http://vault-test:8200/v1"
       VAULT_ROOT_PATH: "http://vault-test:8200/v1/kv"
       VAULT_TIMEOUT: 5000
@@ -88,7 +88,7 @@ services:
         condition: service_healthy
     environment:
       DATABASE_URL: postgres://postgres:postgres@db-test:5432/postgres
-      IDENTITY_BASE_URL: "http://identity-service:3332"
+      IDENTITY_BASE_URL: "http://identity-service-test:3332"
       ENABLE_AUTH: "false"
     networks:
       test:
